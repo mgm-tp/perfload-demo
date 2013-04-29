@@ -32,6 +32,13 @@
 				<include>NOTICE</include>
 			</includes>
 		</fileSet>
+		<fileSet>
+			<directory>${basedir}/src/main/scripts/demo-setup</directory>
+			<outputDirectory>demo-setup</outputDirectory>
+			<includes>
+				<include>**/*</include>
+			</includes>
+		</fileSet>
 	</fileSets>
 	<files>
 		<file>
@@ -57,7 +64,16 @@
 	</files>
 	<dependencySets>
 		<dependencySet>
+			<excludes>
+				<exclude>${project.groupId}:*</exclude>
+			</excludes>
 			<outputDirectory>lib</outputDirectory>
+		</dependencySet>
+		<dependencySet>
+			<includes>
+				<include>${project.groupId}:perfload-demo-driver:*</include>
+			</includes>
+			<outputDirectory>demo-setup/console/test-lib</outputDirectory>
 		</dependencySet>
 	</dependencySets>
 </assembly>
