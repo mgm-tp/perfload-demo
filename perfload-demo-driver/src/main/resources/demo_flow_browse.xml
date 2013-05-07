@@ -18,7 +18,6 @@
 -->
 <requestFlow>
 	<request type="GET" uri="/appinfo" uriAlias="testAlias">
-		<!-- <detailExtraction name="fibn" >(${fibn})</detailExtraction>  -->
 	</request>
 	
 	<request type="PUT" uri="/test">		
@@ -26,16 +25,15 @@
 body content
 ^°~+?ß&/%$§@€
 blubb]]></body>
-		<!-- <param name="n">${n}</param> -->
 	</request>
 	
 	<request type="GET" uri="/test">
-		<header name="Accept">application/xml</header>
-		<!--
-		<detailExtraction name="extractDetail" defaultValue="failed">
-			<![CDATA[NAME="bar"\s+VALUE="([^"]+)"]]>
-		</detailExtraction>
-		-->
+		<header name="Accept">text/plain</header>
+		<param name="Content">application/xml</param>
+		<detailExtraction name="extractDetail" defaultValue="ExtractionFailed">(\belement\b)</detailExtraction>
+	</request>
+	
+	<request type="GET" uri="/garbage/${value}">
 	</request>
 	
 	<request type="POST" uri="/test">
@@ -47,10 +45,7 @@ blubb]]></body>
 	<request type="GET" uri="/time">
 	</request>
 	
-	<request type="GET" uri="/cpuload/1337000">
-	</request>
-	
-	<request type="GET" uri="/garbage/13370">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>
 	
 </requestFlow>

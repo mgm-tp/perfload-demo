@@ -17,17 +17,16 @@
 
 -->
 <requestFlow>
-	<request type="GET" uri="/cpuload/2154587">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>	
-	<request type="GET" uri="/cpuload/845261">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>
-	<request type="GET" uri="/cpuload/1284213">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>
-	<request type="GET" uri="/cpuload/697531">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>
-	<request type="GET" uri="/cpuload/54862">
+	<request type="GET" uri="/cpuload/${value}">
 	</request>
-	<request type="GET" uri="/cpuload/1337000">
-	</request>
-	
+	<request type="GET" uri="/cpuload/${value}">
+	</request>	
 </requestFlow>

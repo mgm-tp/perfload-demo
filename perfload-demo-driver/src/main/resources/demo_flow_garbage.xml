@@ -17,17 +17,16 @@
 
 -->
 <requestFlow>
-	<request type="GET" uri="/garbage/13370">
+	<request type="GET" uri="/garbage/${value}">
 	</request>	
-	<request type="GET" uri="/garbage/36875">
+	<request type="GET" uri="/garbage/${value}">
 	</request>
-	<request type="GET" uri="/garbage/9542">
+	<request type="GET" uri="/garbage/${value}">
 	</request>
-	<request type="GET" uri="/garbage/133">
+	<request type="GET" uri="/garbage/${value}">
 	</request>
-	<request type="GET" uri="/garbage/8654">
+	<request type="GET" uri="/garbage/${value}">
 	</request>
-	<request type="GET" uri="/garbage/19462">
-	</request>
-	
+	<request type="GET" uri="/garbage/${value}">
+	</request>	
 </requestFlow>
