@@ -14,9 +14,11 @@
 # limitations under the License.
 #
 
-operation.test.requestflows=demo_flow.xml
+operation.browse.requestflows=demo_flow_browse.xml
+operation.cpuload.requestflows=demo_flow_cpuload.xml
+operation.garbage.requestflows=demo_flow_garbage.xml
 
-target.appserver.host=http://localhost:8080/perfload-ref-app/rest
+target.appserver.host=http://localhost:8085/perfload-ref-app/rest
 
 wtm.beforeTestStartMillis=0
 wtm.beforeReloadRequestMillis=0

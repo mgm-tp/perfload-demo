@@ -28,14 +28,16 @@ public class DemoDriverTest {
 
 	@Test
 	public void testDemo() throws Exception {
-		runTest("test");
+		runTest("browse");
+		runTest("cpuload");
+		runTest("garbage");
 	}
 
 	private void runTest(final String operation) throws Exception {
 		PropertiesMap props = new PropertiesMap();
 		props.put("wtm.strategy.constant.waitingTimeMillis", "0");
 		props.put("wtm.beforeTestStartMillis", "0");
-		props.put("target.appserver.host", "http://localhost:8080/perfload-ref-app/rest");
+		props.put("target.appserver.host", "http://localhost:8085/perfload-ref-app/rest");
 		props.put("responseParser.allowedStatusCodes", "200,204,500");
 		props.put("responseParser.forbiddenStatusCodes", "404,408");
 
