@@ -25,15 +25,21 @@
 body content
 ^°~+?ß&/%$§@€
 blubb]]></body>
+		<detailExtraction name="response" defaultValue="extraction failed">([A-Za-z0-9\s]+)</detailExtraction>
+	</request>
+	
+	<request type="PUT" uri="/test">		
+		<body>${response}</body>
 	</request>
 	
 	<request type="GET" uri="/test">
 		<header name="Accept">text/plain</header>
 		<param name="Content">application/xml</param>
-		<detailExtraction name="extractDetail" defaultValue="ExtractionFailed">(\belement\b)</detailExtraction>
+		<detailExtraction name="extractedValue" defaultValue="123456">(\b[\d]+\b)</detailExtraction>
 	</request>
 	
-	<request type="GET" uri="/garbage/${value}">
+	<!-- using extracted value from last response -->
+	<request type="GET" uri="/garbage/${extractedValue}">
 	</request>
 	
 	<request type="POST" uri="/test">
@@ -45,6 +51,7 @@ blubb]]></body>
 	<request type="GET" uri="/time">
 	</request>
 	
+	<!-- using value which has been loaded programmatically in the RequestFlowEventListener -->
 	<request type="GET" uri="/cpuload/${value}">
 	</request>
 	
