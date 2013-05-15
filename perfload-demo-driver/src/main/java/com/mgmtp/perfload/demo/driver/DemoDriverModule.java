@@ -30,6 +30,11 @@ public class DemoDriverModule extends AbstractWebLtModule {
 		install(new WebLtModule(testplanProperties));
 	}
 
+	/**
+	 * Reads test data from a file and provides it for dependency injection.
+	 * 
+	 * @return The test data stored in a list.
+	 */
 	@TestData
 	@Provides
 	List<String> provideTestData() {

@@ -38,7 +38,9 @@ import com.mgmtp.perfload.core.client.web.event.RequestFlowEventListener;
 @ThreadSafe
 public class DemoClientListener implements RequestFlowEventListener {
 
+	/** This provider holds data for parameterizing the request flows */
 	private final Provider<PlaceholderContainer> placeholderContainerProvider;
+
 	private final List<String> testDataEntries;
 	private final Random random = new Random();
 
@@ -51,6 +53,7 @@ public class DemoClientListener implements RequestFlowEventListener {
 
 	@Override
 	public void beforeRequest(final RequestFlowEvent event) {
+		// select a random entry from the test data set and make it available for parameterizing the request flow
 		int index = random.nextInt(testDataEntries.size());
 		String entry = testDataEntries.get(index);
 		placeholderContainerProvider.get().put("value", entry);

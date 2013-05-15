@@ -2,7 +2,8 @@
 #
 # Test data for the integration test
 #
-# test values
+# Test values which are loaded by the driver module and injected into 
+# the RequestFlowEventListener for parameterizing the request flow data.
 #
 473826
 83742

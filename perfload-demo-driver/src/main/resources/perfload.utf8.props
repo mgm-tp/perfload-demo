@@ -14,17 +14,22 @@
 # limitations under the License.
 #
 
+# Configure all available operations which can be executed by the daemons
 operation.browse.requestflows=demo_flow_browse.xml
 operation.cpuload.requestflows=demo_flow_cpuload.xml
 operation.garbage.requestflows=demo_flow_garbage.xml
 
-target.appserver.host=http://localhost:8085/perfload-ref-app/rest
+# Configure the target hosts of the operations
+target.appserver.host=http://localhost:8085/rest
 
+# Configure waiting times before test start
 wtm.beforeTestStartMillis=0
 wtm.beforeReloadRequestMillis=0
 
+# Configure waiting time before each request is executed
 wtm.strategy.constant.waitingTimeMillis=0
 
-responseParser.errorPattern.1=<!--Lasttest stop -->
+# Configure response parser to accept and decline specific status codes and error patterns
+responseParser.errorPattern.1=<!--loadtest stop -->
 responseParser.allowedStatusCodes=200,204,500
 responseParser.forbiddenStatusCodes=404,408
