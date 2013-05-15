@@ -35,8 +35,10 @@ elif [ ! "x$GROOVY_HOME" = "x" ] ; then
 fi
 
 JAVA_OPTS=-Xmx256m
+export JAVA_OPTS
 
-CLASSPATH=scripts:conf:lib/*
+CLASSPATH=./lib/'\*'
+export CLASSPATH
 
 echo "$GANT_CMD -f DemoInstaller.gant $@"
 
