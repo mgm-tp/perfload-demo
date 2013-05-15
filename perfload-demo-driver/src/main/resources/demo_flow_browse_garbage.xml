@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2013 mgm technology partners GmbH
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<requestFlow>
+	<!-- Request info about the app running on the server -->
+	<request type="GET" uri="/appinfo" uriAlias="testAlias"/>
+	
+	<!--Instruct the server to store the sent data.
+		Extract values from the response matching the given regular expression. -->
+	<request type="PUT" uri="/test">		
+		<body><![CDATA[Some multi-line
+body content
+^°~+?ß&/%$§@€
+blubb]]></body>
+		<detailExtraction name="response" defaultValue="extraction failed">([A-Za-z0-9\s]+)</detailExtraction>
+	</request>
+	
+	<!-- Send the extracted response data from the last request and instruct the server to store it. -->
+	<request type="PUT" uri="/test">		
+		<body>${response}</body>
+	</request>
+	
+	<!-- Request data in specified format from the server.
+		 Extract values from the response matching the given regular expression. -->
+	<request type="GET" uri="/test">
+		<header name="Accept">text/plain</header>
+		<param name="Content">application/xml</param>
+		<detailExtraction name="extractedValue" defaultValue="123456">(\b[\d]+\b)</detailExtraction>
+	</request>
+	
+	<!-- Request data from the server and use the extracted value from the last response to parameterize the request. -->
+	<request type="GET" uri="/garbage/${extractedValue}"/>
+	
+	<!-- Test a post method on the server. -->
+	<request type="POST" uri="/test"/>
+	
+	<!-- Instruct the server to delete some data. -->
+	<request type="DELETE" uri="/test"/>
+	
+	<!-- Request data from the server. The response is delayed by a few milliseconds to seconds. -->
+	<request type="GET" uri="/time"/>
+	
+	<!-- Use a value which has been added programmatically in the RequestFlowEventListener by loading test data
+		 to parameterize the request. -->
+	<request type="GET" uri="/cpuload/${value}"/>
+	
+	<!-- Request data from a page that is not available and therefore returning an error code which will
+		 abort the currently executed request flow. The 404 HTTP status code is registered as forbidden in the
+		 perfload configuration file. -->
+	<request type="GET" uri="/404"/>
+	
+</requestFlow>
