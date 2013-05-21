@@ -21,7 +21,7 @@ operation.garbage.requestflows=demo_flow_garbage.xml
 operation.browse_garbage.requestflows=demo_flow_browse_garbage.xml
 
 # Configure the target hosts of the operations
-target.appserver.host=http://localhost:8085/rest
+target.localhost.host=http://localhost:8080/rest
 
 # Configure waiting times before test start
 wtm.beforeTestStartMillis=0
