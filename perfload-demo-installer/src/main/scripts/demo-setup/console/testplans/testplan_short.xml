@@ -5,14 +5,9 @@
 		<testplan id="demo" module="com.mgmtp.perfload.demo.driver.DemoDriverModule">
 			<loadProfileConfig>demoTest_short.perfload</loadProfileConfig>
 			<testJars>
-				<!-- Additional dependencies for Web load tests -->
-				<testJar name="perfload-web-4.6.1.jar" dir="test-lib" />
-				<testJar name="httpclient-4.1.2.jar" dir="test-lib" />
-				<testJar name="httpcore-4.1.2.jar" dir="test-lib" />
-				<testJar name="commons-codec-1.4.jar" dir="test-lib" />
-
 				<!-- Custom driver implementation -->
 				<testJar name="perfload-demo-driver-1.0.0-SNAPSHOT.jar" dir="test-lib" />
+				<!-- Additional dependencies your driver might have -->
 			</testJars>
 		</testplan>
 	</testplans>

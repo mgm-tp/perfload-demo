@@ -40,6 +40,13 @@
 			</includes>
 			<filtered>true</filtered>
 		</fileSet>
+		<fileSet>
+			<directory>${basedir}/src/main/scripts/demo-setup/perfalyzer/output</directory>
+			<outputDirectory>demo-setup/perfalyzer/output</outputDirectory>
+			<excludes>
+				<exclude>*</exclude>
+			</excludes>
+		</fileSet>
 	</fileSets>
 	<files>
 		<file>

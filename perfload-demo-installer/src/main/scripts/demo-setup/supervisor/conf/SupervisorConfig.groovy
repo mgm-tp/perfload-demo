@@ -5,7 +5,7 @@
 
 loadProfileTestTimeout = 10
 cleanupBeforeTest = true
-startServersBeforeTest = false
+startServersBeforeTest = true
 shutdownServersAfterTest = false
 collectResults = true
 createReport = true

@@ -1,5 +1,5 @@
-# Created: Tue May 14 12:34:29 CEST 2013
-# Load Profile Config File: demoTest_CPULoad_stairs.xml
+# Created: Wed May 22 09:20:35 CEST 2013
+# Load Profile Config File: demoTest_CPULoad.xml
 # Load Profile Name: CPULoad
 1897;cpuload;localhost;1;1
 3286;cpuload;localhost;1;2
