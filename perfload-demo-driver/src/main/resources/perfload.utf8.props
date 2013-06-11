@@ -18,7 +18,9 @@
 operation.browse.requestflows=demo_flow_browse.xml
 operation.cpuload.requestflows=demo_flow_cpuload.xml
 operation.garbage.requestflows=demo_flow_garbage.xml
+operation.persistent_garbage.requestflows=demo_flow_persistent_garbage.xml
 operation.browse_garbage.requestflows=demo_flow_browse_garbage.xml
+operation.error.requestflows=demo_flow_error.xml
 
 # Configure the target hosts of the operations
 target.localhost.host=http://localhost:8080/rest

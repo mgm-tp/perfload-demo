@@ -38,13 +38,12 @@ blubb]]></body>
 	<!-- Request data in specified format from the server.
 		 Extract values from the response matching the given regular expression. -->
 	<request type="GET" uri="/test">
-		<header name="Accept">text/plain</header>
-		<param name="Content">application/xml</param>
+		<header name="Content-Type">application/xml</header>
 		<detailExtraction name="extractedValue" defaultValue="123456">(\b[\d]+\b)</detailExtraction>
 	</request>
 	
 	<!-- Request data from the server and use the extracted value from the last response to parameterize the request. -->
-	<request type="GET" uri="/garbage/${extractedValue}"/>
+	<request type="GET" uri="/garbage/${extractedValue}" uriAlias="randomGarbage"/>
 	
 	<!-- Test a post method on the server. -->
 	<request type="POST" uri="/test"/>
@@ -57,11 +56,6 @@ blubb]]></body>
 	
 	<!-- Use a value which has been added programmatically in the RequestFlowEventListener by loading test data
 		 to parameterize the request. -->
-	<request type="GET" uri="/cpuload/${value}"/>
-	
-	<!-- Request data from a page that is not available and therefore returning an error code which will
-		 abort the currently executed request flow. The 404 HTTP status code is registered as forbidden in the
-		 perfload configuration file. -->
-	<request type="GET" uri="/404"/>
+	<request type="GET" uri="/cpuload/${value}" uriAlias="randomCPUload"/>
 	
 </requestFlow>

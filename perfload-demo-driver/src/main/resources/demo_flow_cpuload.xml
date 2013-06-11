@@ -18,13 +18,11 @@
 -->
 <requestFlow>
 	<!-- Use values which have been added programmatically in the RequestFlowEventListener by loading test data
-		 to parameterize the requests. -->
-		 
+		 to parameterize the requests. -->		 
 	<request type="GET" uri="/cpuload/${value}"/>
 	<request type="GET" uri="/cpuload/${value}"/>
 	<request type="GET" uri="/cpuload/${value}"/>
 	<request type="GET" uri="/cpuload/${value}"/>
 	<request type="GET" uri="/cpuload/${value}"/>
-	<request type="GET" uri="/cpuload/${value}"/>
-	
+	<request type="GET" uri="/cpuload/${value}"/>	
 </requestFlow>
