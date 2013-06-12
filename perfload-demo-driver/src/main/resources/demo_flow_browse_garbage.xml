@@ -31,7 +31,7 @@ blubb]]></body>
 	</request>
 	
 	<!-- Send the extracted response data from the last request and instruct the server to store it. -->
-	<request type="PUT" uri="/test">		
+	<request type="PUT" uri="/test">
 		<body>${response}</body>
 	</request>
 	

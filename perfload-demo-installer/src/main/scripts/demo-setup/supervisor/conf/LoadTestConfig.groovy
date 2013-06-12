@@ -16,7 +16,13 @@ hostConfigs {
 				dir = '../refapp'
 				files = 'gclog.txt'
 				zipName = 'gc-logs.zip'
-				cleanup = true
+				cleanup = false
+			}
+			agentLogs {
+				dir = '../agent'
+				files = '*.log'
+				zipName = 'agent-logs.zip'
+				cleanup = false
 			}
 		}
 	}

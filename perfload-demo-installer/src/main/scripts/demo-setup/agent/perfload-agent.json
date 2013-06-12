@@ -1,0 +1,12 @@
+{
+	'entryPoints': {
+		'servlets': [],
+		'filters': ['com.google.inject.servlet.GuiceFilter']
+	},
+	'instrumentations': {
+		'com.mgmtp.perfload.refapp.resources.RefAppResource': {
+			'delayResponse': [],
+			'generateGarbage':[['int']]
+		}
+	}
+}
