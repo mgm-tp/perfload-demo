@@ -1,0 +1,107 @@
+import org.apache.commons.lang3.StringUtils
+
+buildscript {
+	dependencies {
+		classpath  fileTree(dir: 'lib')
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+configurations {
+	distro {
+		description = 'perfLoad Distributions'
+		transitive = false
+	}
+}
+
+dependencies {
+	def config = new ConfigSlurper().parse(file('conf/DemoInstallerConfig.groovy').getText('UTF-8'))
+	config.distros.each { artifactId, version ->
+		distro "com.mgmtp.perfload:perfload-${artifactId}:${version}:dist@zip"
+	}
+}
+
+defaultTasks 'setup'
+
+task setup << {
+	welcome()
+	init()
+	
+	if (project.hasProperty('perfloadHome')) {
+		unzipDistributions()
+		configureDistributions()
+		println 'perfLoad demo setup installation finished.'
+	}
+}
+
+def welcome() {
+	int len = 65
+	String copyright = StringUtils.center('(c) 2013, mgm technology partners GmbH', len)
+	String welcomeMsg = StringUtils.center('Welcome to perfLoad\'s Demo Installer 0.0.1-SNAPSHOT', len)
+
+	List list1 = []
+	(len + 2).times { list1 << '*' }
+	String msg1 = list1.join()
+
+	List list2 = ['*']
+	len.times { list2 << ' ' }
+	list2 << '*'
+	String msg2 = list2.join()
+
+	String message = """
+	$msg1
+	$msg2
+	$msg2
+	*${welcomeMsg}*
+	*${copyright}*
+	$msg2
+	$msg2
+	$msg1
+	"""
+
+	println message
+}
+
+def init() {
+	def console = System.console()
+	
+	def perfloadHome = console.readLine ' > Enter installation directory [../perfload-demo]: '
+	if (!perfloadHome) {
+		perfloadHome = '../perfload-demo'
+	}
+
+	def dir = file(perfloadHome)
+	if (dir.exists() && dir.list().length > 0) {
+		def deleteHome = console.readLine ' > Directory already exists and is not empty. Delete [Y/n]? '
+		if ('y'.equalsIgnoreCase(StringUtils.defaultIfEmpty(deleteHome, 'y'))) {
+			ant.delete(dir: perfloadHome)
+			dir.mkdirs()
+			project.ext.perfloadHome = perfloadHome
+		} else {
+			println 'Cannot proceed due to existing installation directory. Exiting!'
+		}
+	}
+}
+
+def unzipDistributions() {
+	println 'Downloading and unzipping perfLoad distributions...'
+	configurations.distro.each { zip ->
+		println "\t${zip.name}"
+		copy {
+			from zipTree(zip)
+			into perfloadHome
+		}
+	}
+}
+
+def configureDistributions() {
+	println 'Configuring installation...'
+	copy {
+		from 'demo-setup'
+		into perfloadHome
+	}
+}

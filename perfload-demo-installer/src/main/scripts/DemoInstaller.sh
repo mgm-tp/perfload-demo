@@ -19,27 +19,10 @@
 cd `dirname $0`
 [ -f setenv.sh ] && . ./setenv.sh
 
-GANT_CMD=gant
+GRADLE_CMD=gradle
 
-if [ ! "x$GANT_HOME" = "x" ] ; then
-
-	GANT_CMD="$GANT_HOME/bin/$GANT_CMD"
-
-elif [ ! "x$GROOVY_HOME" = "x" ] ; then
-
-	if [ -x "$GROOVY_HOME/bin/gant" ] ; then
-
-		GANT_CMD="$GROOVY_HOME/bin/$GANT_CMD"
-
-	fi
+if [ ! "x$GRADLE_HOME" = "x" ] ; then
+	GRADLE_CMD="$GRADLE_HOME/bin/$GRADLE_CMD"
 fi
 
-JAVA_OPTS=-Xmx256m
-export JAVA_OPTS
-
-CLASSPATH=./lib/'\*'
-export CLASSPATH
-
-echo "$GANT_CMD -f DemoInstaller.gant $@"
-
-exec $GANT_CMD -f DemoInstaller.gant $@
+exec $GRADLE_CMD -b DemoInstaller.gradle -q

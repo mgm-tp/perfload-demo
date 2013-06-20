@@ -21,30 +21,15 @@ cd %~dp0
 
 if exist setenv.cmd call setenv.cmd
 
-set GANT_CMD=gant.bat
+set GRADLE_CMD=gradle.bat
 
-if not "%GANT_HOME%" == "" goto gotGantHome
+if "%GRADLE_HOME%" == "" goto endSetEnv
 
-if not "%GROOVY_HOME%" == "" goto gotGroovyHome
+set GRADLE_CMD="%GRADLE_HOME%\bin\%GRADLE_CMD%"
 
-:gotGantHome
-set GANT_CMD="%GANT_HOME%\bin\%GANT_CMD%"
-goto endSetEnv
-
-:gotGroovyHome
-if not exist "%GROOVY_HOME%\bin\gant.bat" goto endSetEnv
-
-set GANT_CMD="%GROOVY_HOME%\bin\%GANT_CMD%"
 :endSetEnv
 
-rem this is also a workaround for
-rem https://jira.codehaus.org/browse/GANT-129
-set JAVA_OPTS=-Xmx256m
-
-set CLASSPATH=scripts;conf;lib\*
-
-@echo %GANT_CMD% -f DemoInstaller.gant %*
-call %GANT_CMD% -f DemoInstaller.gant %*
+call %GRADLE_CMD% -b DemoInstaller.gradle -q
 
 pause
 
