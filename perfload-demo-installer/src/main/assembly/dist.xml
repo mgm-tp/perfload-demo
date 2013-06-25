@@ -55,7 +55,7 @@
 			<filtered>true</filtered>
 		</file>
 		<file>
-			<source>${basedir}/src/main/scripts/DemoInstaller.gant</source>
+			<source>${basedir}/src/main/scripts/DemoInstaller.gradle</source>
 			<outputDirectory>/</outputDirectory>
 			<filtered>true</filtered>
 		</file>
