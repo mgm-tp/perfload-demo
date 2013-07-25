@@ -19,10 +19,4 @@
 cd `dirname $0`
 [ -f setenv.sh ] && . ./setenv.sh
 
-GRADLE_CMD=gradle
-
-if [ ! "x$GRADLE_HOME" = "x" ] ; then
-	GRADLE_CMD="$GRADLE_HOME/bin/$GRADLE_CMD"
-fi
-
-exec $GRADLE_CMD -b DemoInstaller.gradle -q
+exec ./gradlew -b DemoInstaller.gradle -q

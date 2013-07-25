@@ -12,15 +12,23 @@
  */
 
 import org.apache.commons.lang3.StringUtils
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
+import org.apache.commons.compress.archivers.zip.ZipFile
+import org.apache.commons.io.IOUtils
+import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
 	dependencies {
-		classpath  fileTree(dir: 'lib')
+		classpath fileTree(dir: 'lib')
 	}
 }
 
 repositories {
 	mavenLocal()
+	maven {
+		url "http://mgmbuilder02:8081/nexus/content/groups/public"
+	}
 	mavenCentral()
 }
 
@@ -33,8 +41,8 @@ configurations {
 
 dependencies {
 	def config = new ConfigSlurper().parse(file('conf/DemoInstallerConfig.groovy').getText('UTF-8'))
-	config.distros.each { artifactId, version ->
-		distro "com.mgmtp.perfload:perfload-${artifactId}:${version}:dist@zip"
+	config.distros.each { a, v ->
+		distro "${project.groupId}:perfload-${a}:${v}:dist@zip"
 	}
 }
 
@@ -54,7 +62,7 @@ task setup << {
 def welcome() {
 	int len = 65
 	String copyright = StringUtils.center('(c) 2013, mgm technology partners GmbH', len)
-	String welcomeMsg = StringUtils.center('Welcome to perfLoad\'s Demo Installer 0.0.1-SNAPSHOT', len)
+	String welcomeMsg = StringUtils.center('Welcome to perfLoad\'s Demo Installer ${project.version}', len)
 
 	List list1 = []
 	(len + 2).times { list1 << '*' }
@@ -105,17 +113,75 @@ def unzipDistributions() {
 	println 'Downloading and unzipping perfLoad distributions...'
 	configurations.distro.each { zip ->
 		println "\t${zip.name}"
-		copy {
-			from zipTree(zip)
-			into perfloadHome
+
+		// we need to use commons-compress in order to restore Unix permissions
+		unzip(file(zip), perfloadHome)
+	}
+}
+
+def unzip(final File zipFile, final String destDir) {
+	final ZipFile zip = new ZipFile(zipFile)
+	try	{
+		for (Enumeration<? extends ZipArchiveEntry> entries = zip.getEntries(); entries.hasMoreElements();) {
+			ZipArchiveEntry zipEntry = entries.nextElement()
+			File file = new File(destDir, zipEntry.getName())
+			if (zipEntry.isDirectory())	{
+				file.mkdirs()
+				continue
+			}
+			if (!file.getParentFile().exists())	{
+				file.getParentFile().mkdirs()
+			}
+
+			InputStream is = null
+			OutputStream fos = null
+			try	{
+				is = zip.getInputStream(zipEntry)
+				fos = new FileOutputStream(file)
+				IOUtils.copy(is, fos)
+
+				// check for user-executable bit on entry and apply to file
+				if ((zipEntry.getUnixMode() & 0100) != 0) {
+					file.setExecutable(true)
+				}
+				file.setLastModified(zipEntry.getTime())
+			} finally {
+				IOUtils.closeQuietly(is)
+				IOUtils.closeQuietly(fos)
+			}
+		}
+	} finally {
+		try	{
+			zip.close()
+		} catch (IOException e)	{
+			// ignore
 		}
 	}
 }
 
 def configureDistributions() {
 	println 'Configuring installation...'
+
 	copy {
 		from 'demo-setup'
 		into perfloadHome
 	}
+
+	ant.delete {
+		fileset(dir: perfloadHome) {
+			include(name: '**/*_Default.*')
+			include(name: '**/*.default.*')
+			if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+				include(name: '**/*_unix.*')
+			} else {
+				include(name: '**/*_windows.*')
+			}
+		}
+	}
+
+	def family = Os.isFamily(Os.FAMILY_WINDOWS) ? 'windows' : 'unix'
+	ant.move(
+		file: "${perfloadHome}/supervisor/conf/LoadTestConfig_${family}.groovy",
+		tofile: "${perfloadHome}/supervisor/conf/LoadTestConfig.groovy"
+	)
 }

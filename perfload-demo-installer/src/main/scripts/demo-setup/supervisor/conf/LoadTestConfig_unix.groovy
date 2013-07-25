@@ -6,16 +6,26 @@ hostConfigs {
 		user = 'myuser'
 		password = 'mypass'
 		perfLoadHome = '..' // relative path
-		osfamily = 'windows' // or 'unix'
+		osfamily = 'unix'
 		client = true
 		perfmon = true
-		//startup = ['cmd.exe /c "cd ../refapp && refapp.cmd"']
-		//shutdown = ['cd refapp && ./shutdown.sh']
+		startup = [
+			[dir: '../ref-app', executable: './bin/ref-app', args: ['start']]
+		]
+		shutdown = [
+			[dir: '../ref-app', executable: './bin/ref-app', args: ['stop']]
+		]
 		archiving {
 			gcLogs {
-				dir = '../refapp'
+				dir = '../ref-app'
 				files = 'gclog.txt'
 				zipName = 'gc-logs.zip'
+				cleanup = false
+			}
+			wrapperLog {
+				dir = '../ref-app'
+				files = 'wrapper.log'
+				zipName = 'wrapper-log.zip'
 				cleanup = false
 			}
 			agentLogs {

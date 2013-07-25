@@ -21,15 +21,7 @@ cd %~dp0
 
 if exist setenv.cmd call setenv.cmd
 
-set GRADLE_CMD=gradle.bat
-
-if "%GRADLE_HOME%" == "" goto endSetEnv
-
-set GRADLE_CMD="%GRADLE_HOME%\bin\%GRADLE_CMD%"
-
-:endSetEnv
-
-call %GRADLE_CMD% -b DemoInstaller.gradle -q
+gradlew -b DemoInstaller.gradle -q
 
 pause
 

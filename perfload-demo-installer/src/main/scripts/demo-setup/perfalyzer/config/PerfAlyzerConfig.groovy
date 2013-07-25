@@ -9,23 +9,6 @@ maxHistoryItems = 20
 
 email {
 	enabled = false
-	from = null
-	to = []
-	smtp {
-		host = 'smtp-relay.mgm-tp.com'
-		// port = 
-		// ssl = true
-		// auth = true
-		// username = ''
-		// password = ''
-	}
-	/*
-	subjects {
-		
-	}
-	*/
-	
-	// maxHistoryItems = 20
 }
 
 /* Formatting happens during report preparation, i. e. patterns are matched against binned files.
@@ -53,7 +36,7 @@ formats {
 	}
 	measuringExecutions {
 		pattern = ~/\[measuring\]\[executions\].*/
-		unitX = 'axis.label.timeMillis'
+		unitX = 'axis.label.timeSeconds'
 		unitY = ['axis.label.medianExecutionTimeMillis']
 	}
 	measuringExecutionsPerMinute {
@@ -109,5 +92,5 @@ reportContents {
 	exclusions = [
 		~/global[\\\\/]\[perfmon\]\[java\].*/,
 		~/.*(?<!global)[\\\\/]\[perfmon\]\[(?:mem|swap|cpu_X|io_(?:r|w))\].*/
-	]	
+	]
 }
