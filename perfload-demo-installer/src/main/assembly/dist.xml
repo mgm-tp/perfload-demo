@@ -57,11 +57,6 @@
 	</fileSets>
 	<files>
 		<file>
-			<source>${basedir}/src/main/scripts/conf/DemoInstallerConfig.groovy</source>
-			<outputDirectory>/conf</outputDirectory>
-			<filtered>true</filtered>
-		</file>
-		<file>
 			<source>${basedir}/src/main/scripts/DemoInstaller.gradle</source>
 			<outputDirectory>/</outputDirectory>
 			<filtered>true</filtered>

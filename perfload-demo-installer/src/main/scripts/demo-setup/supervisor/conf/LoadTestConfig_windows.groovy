@@ -3,11 +3,9 @@
 
 hostConfigs {
 	localhost {
-		user = 'myuser'
-		password = 'mypass'
 		perfLoadHome = '..' // relative path
 		osfamily = 'windows'
-		client = true
+		daemonId = 1
 		perfmon = true
 		startup = [
 			['dir': '..\\ref-app', 'executable': '.\\bin\\ref-app', 'args': ['install']],

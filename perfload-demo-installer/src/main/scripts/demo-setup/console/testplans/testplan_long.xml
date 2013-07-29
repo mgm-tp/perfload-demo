@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="perfload-config.xsd"
-	xmlns:xi="http://www.w3.org/2001/XInclude">
-	<testplans>
-		<testplan id="demo" module="com.mgmtp.perfload.demo.driver.DemoDriverModule">
-			<loadProfileConfig>demoTest_long.perfload</loadProfileConfig>
-			<testJars>
-				<!-- Custom driver implementation -->
-				<testJar name="perfload-demo-driver-1.0.0-SNAPSHOT.jar" dir="test-lib" />
-				<!-- Additional dependencies your driver might have -->
-			</testJars>
-		</testplan>
-	</testplans>
-	<daemons>
-		<daemon host="localhost" id="1" port="20000" />
-	</daemons>
-</config>
+<testplan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="perfload-testplan.xsd">
+	<module>com.mgmtp.perfload.demo.driver.DemoDriverModule</module>
+	<loadProfile>demoTest_long.perfload</loadProfile>
+	<testJars>
+		<testJar>perfload-demo-driver-1.0.0-SNAPSHOT.jar</testJar>
+	</testJars>
+</testplan>

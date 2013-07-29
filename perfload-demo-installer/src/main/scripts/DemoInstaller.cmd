@@ -21,6 +21,8 @@ cd %~dp0
 
 if exist setenv.cmd call setenv.cmd
 
+@echo Initializing...
+
 gradlew -b DemoInstaller.gradle -q
 
 pause
