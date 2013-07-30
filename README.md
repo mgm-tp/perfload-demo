@@ -2,9 +2,12 @@
 
 Demo scenario including demo load tests, a demo driver, and an installer for easy setup.
 
-perfLoad is currently being open-sourced. Sources and documentation
-will be transferred to Github. We are hoping to finish this process
-by March 2013.
+---
+
+perfLoad is [mgm's](http://www.mgm-tp.com) load and performance testing framework.
+
+* [perfLoad Wiki](https://github.com/mgm-tp/perfload/wiki)
+* [perfLoad Issues](https://github.com/mgm-tp/perfload/issues)
 
 ---
 
