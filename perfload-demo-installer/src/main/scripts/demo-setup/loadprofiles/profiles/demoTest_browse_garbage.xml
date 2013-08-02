@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadProfileConfig>
+    <name>Persistent Garbage</name>
+    <description>Tests the garbge collector and memory leak behaviour of the server.</description>
+    <clients>
+        <client>client</client>
+    </clients>
+    <targets>
+        <target>localhost</target>
+    </targets>
+    <loadProfileEntities>
+        <stairs>
+            <operation>browse_garbage</operation>
+            <t0>0</t0>
+            <a>1</a>
+            <b>5</b>
+            <c>1</c>
+            <h>65000</h>
+            <numSteps>1</numSteps>
+        </stairs>
+    </loadProfileEntities>
+</loadProfileConfig>

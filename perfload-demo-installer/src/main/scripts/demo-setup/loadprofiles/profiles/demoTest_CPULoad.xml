@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadProfileConfig>
+    <name>CPULoad</name>
+    <description>Load tests the CPU of the server at different levels.</description>
+    <clients>
+        <client>client</client>
+    </clients>
+    <targets>
+        <target>localhost</target>
+    </targets>
+    <loadProfileEntities>
+        <stairs>
+            <operation>cpuload</operation>
+            <t0>0</t0>
+            <a>1</a>
+            <b>3</b>
+            <c>1</c>
+            <h>22000</h>
+            <numSteps>3</numSteps>
+        </stairs>
+    </loadProfileEntities>
+</loadProfileConfig>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+    <operations>
+        <operation>
+            <name>browse</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+        <operation>
+            <name>error</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+        <operation>
+            <name>browse_garbage</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+        <operation>
+            <name>cpuload</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+        <operation>
+            <name>garbage</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+        <operation>
+            <name>persistent_garbage</name>
+            <relativeClientLoad>1.0</relativeClientLoad>
+        </operation>
+    </operations>
+    <targets>
+        <target>
+            <name>localhost</name>
+            <loadPart>1.0</loadPart>
+        </target>
+    </targets>
+    <clients>
+        <client>
+            <name>client</name>
+            <daemonId>1</daemonId>
+            <numProcesses>2</numProcesses>
+            <relativePower>0.5</relativePower>
+        </client>
+    </clients>
+</settings>

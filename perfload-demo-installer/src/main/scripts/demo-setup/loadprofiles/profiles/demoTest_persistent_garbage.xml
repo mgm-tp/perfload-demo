@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadProfileConfig>
+    <name>demoTest garbage with persistent</name>
+    <description>Tests gc</description>
+    <clients>
+        <client>client</client>
+    </clients>
+    <targets>
+        <target>localhost</target>
+    </targets>
+    <loadProfileEntities>
+        <stairs>
+            <operation>garbage</operation>
+            <t0>0</t0>
+            <a>3</a>
+            <b>2</b>
+            <c>1</c>
+            <h>50000</h>
+            <numSteps>2</numSteps>
+        </stairs>
+        <stairs>
+            <operation>persistent_garbage</operation>
+            <t0>3</t0>
+            <a>1</a>
+            <b>2</b>
+            <c>3</c>
+            <h>40000</h>
+            <numSteps>1</numSteps>
+        </stairs>
+    </loadProfileEntities>
+</loadProfileConfig>

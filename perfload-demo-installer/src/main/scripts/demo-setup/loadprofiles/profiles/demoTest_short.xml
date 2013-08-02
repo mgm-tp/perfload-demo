@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadProfileConfig>
+    <name>Ultra short</name>
+    <description>Only for debug purposes</description>
+    <clients>
+        <client>client</client>
+    </clients>
+    <targets>
+        <target>localhost</target>
+    </targets>
+    <loadProfileEntities>
+        <stairs>
+            <operation>browse</operation>
+            <t0>0</t0>
+            <a>2</a>
+            <b>1</b>
+            <c>2</c>
+            <h>15000</h>
+            <numSteps>2</numSteps>
+        </stairs>
+        <stairs>
+            <operation>cpuload</operation>
+            <t0>0</t0>
+            <a>6</a>
+            <b>0</b>
+            <c>1</c>
+            <h>20000</h>
+            <numSteps>1</numSteps>
+        </stairs>
+        <stairs>
+            <operation>garbage</operation>
+            <t0>1</t0>
+            <a>1</a>
+            <b>2</b>
+            <c>1</c>
+            <h>12000</h>
+            <numSteps>2</numSteps>
+        </stairs>
+    </loadProfileEntities>
+</loadProfileConfig>
