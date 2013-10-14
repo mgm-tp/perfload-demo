@@ -16,7 +16,8 @@
     limitations under the License.
 
 -->
-<requestFlow>
+<requestFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://mgm-tp.github.io/perfload/schema/1.0/perfload-request-flow.xsd">
 	<!-- Use values which have been added programmatically in the RequestFlowEventListener by loading test data
 		 to parameterize the requests. -->
 	<request type="GET" uri="/garbage_persistent/${value}" uriAlias="garbage"/>

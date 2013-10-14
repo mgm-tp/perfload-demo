@@ -16,18 +16,19 @@
     limitations under the License.
 
 -->
-<requestFlow>
+<requestFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://mgm-tp.github.io/perfload/schema/1.0/perfload-request-flow.xsd">
 	<!-- Request info about the app running on the server. -->
 	<request type="GET" uri="/appinfo" uriAlias="testAlias"/>
-	
+
 	<!-- Creates and persistently stores garbage to simulate memory leaks. -->
 	<request type="GET" uri="/garbage_persistent/${value}" uriAlias="randomPersistentGarbage"/>
-		
+
 	<!-- Request data from the server. The response is delayed by a few milliseconds to seconds. -->
 	<request type="GET" uri="/time"/>
-	
+
 	<!-- Use a value which has been added programmatically in the RequestFlowEventListener by loading test data
 		 to parameterize the request. -->
 	<request type="GET" uri="/cpuload/${value}" uriAlias="randomCPUload"/>
-	
+
 </requestFlow>
