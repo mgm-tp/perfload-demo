@@ -25,13 +25,6 @@ operation.error.requestflows=demo_flow_error.xml
 # Configure the target hosts of the operations
 target.localhost.host=http://localhost:8199/rest
 
-# Configure waiting times before test start
-wtm.beforeTestStartMillis=0
-wtm.beforeReloadRequestMillis=0
-
-# Configure waiting time before each request is executed
-wtm.strategy.constant.waitingTimeMillis=0
-
 # Configure response parser to accept and decline specific status codes and error patterns
 responseParser.errorPattern.1=<!--loadtest stop -->
 responseParser.allowedStatusCodes=200,204,500
