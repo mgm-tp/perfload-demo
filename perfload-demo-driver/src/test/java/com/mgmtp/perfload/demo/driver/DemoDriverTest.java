@@ -37,6 +37,6 @@ public class DemoDriverTest {
 		props.put("target.appserver.host", "http://localhost:8085/perfload-ref-app/rest");
 		props.put("responseParser.allowedStatusCodes", "200,204,500");
 		props.put("responseParser.forbiddenStatusCodes", "404,408");
-		DriverTestRunner.runDriver(new DemoDriverModule(props), operation, "localhost");
+		DriverTestRunner.runDriver(new DemoDriverModule(props), operation, "localhost", props);
 	}
 }
