@@ -54,9 +54,4 @@
 			<artifactId>testng</artifactId>
 		</dependency>
 	</dependencies>
-
-		<properties>
-		<copyright.year>2013</copyright.year>
-		<perfload.core.version>4.7.0-SNAPSHOT</perfload.core.version>
-	</properties>
 </project>
