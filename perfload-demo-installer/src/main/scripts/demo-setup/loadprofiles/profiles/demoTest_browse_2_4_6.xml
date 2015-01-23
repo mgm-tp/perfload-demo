@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<loadProfileConfig>
+    <name>Browse</name>
+    <description>Browsing scenario with three steps</description>
+    <clients>
+        <client>client</client>
+    </clients>
+    <targets>
+        <target>localhost</target>
+    </targets>
+    <loadProfileEntities>
+        <markers>
+            <name>Step 1</name>
+            <left>2</left>
+            <right>10</right>
+        </markers>
+        <markers>
+            <name>Step 2</name>
+            <left>13</left>
+            <right>21</right>
+        </markers>
+        <markers>
+            <name>Step 3</name>
+            <left>24</left>
+            <right>32</right>
+        </markers>
+        <stairs>
+            <operation>browse_garbage</operation>
+            <t0>0</t0>
+            <a>1</a>
+            <b>10</b>
+            <c>1</c>
+            <h>20000</h>
+            <numSteps>3</numSteps>
+        </stairs>
+    </loadProfileEntities>
+</loadProfileConfig>

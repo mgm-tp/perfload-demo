@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testplan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	xmlns:xi="http://www.w3.org/2001/XInclude"
+		xsi:noNamespaceSchemaLocation="http://mgm-tp.github.io/perfload/schema/1.0/perfload-testplan.xsd">
+	<module>com.mgmtp.perfload.demo.driver.DemoDriverModule</module>
+	<loadProfile>demoTest_browse_2_4_6.perfload</loadProfile>
+	<testJars>
+		<testJar>perfload-demo-driver-1.0.0-SNAPSHOT.jar</testJar>
+	</testJars>
+</testplan>
