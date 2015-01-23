@@ -17,7 +17,7 @@
 
 -->
 <requestFlow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:noNamespaceSchemaLocation="http://mgm-tp.github.io/perfload/schema/1.0/perfload-request-flow.xsd">stFlow>
+		xsi:noNamespaceSchemaLocation="http://mgm-tp.github.io/perfload/schema/1.0/perfload-request-flow.xsd">
 	<!-- Request info about the app running on the server -->
 	<request type="GET" uri="/appinfo" uriAlias="testAlias"/>
 
