@@ -43,15 +43,15 @@ configurations {
 
 dependencies {
 	def distros = [
-		['console', '4.7.0'],
-		['client', '4.7.0'],
-		['daemon', '4.7.0'],
-		['agent', '1.3.0-SNAPSHOT'],
-		['perfmon', '2.3.0-SNAPSHOT'],
+		['console', '4.8.0-beta-1'],
+		['client', '4.8.0-beta-1'],
+		['daemon', '4.8.0-beta-1'],
+		['agent', '1.3.0'],
+		['perfmon', '2.3.0-beta-1'],
 		['perfalyzer', '1.0.0-SNAPSHOT'],
-		['ref-app', '1.0.0-SNAPSHOT'],
-		['supervisor', '1.9.0-SNAPSHOT'],
-		['loadprofiles', '1.1.0-SNAPSHOT']
+		['ref-app', '1.0.1-SNAPSHOT'],
+		['supervisor', '2.0.0-SNAPSHOT'],
+		['loadprofiles', '1.1.0']
 	]
 	distros.each { a, v ->
 		distro "${project.groupId}:perfload-${a}:${v}:dist@zip"

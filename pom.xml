@@ -103,6 +103,6 @@
 	</dependencyManagement>
 
 	<properties>
-		<perfload.core.version>4.7.0</perfload.core.version>
+		<perfload.core.version>4.8.0-beta-1</perfload.core.version>
 	</properties>
 </project>

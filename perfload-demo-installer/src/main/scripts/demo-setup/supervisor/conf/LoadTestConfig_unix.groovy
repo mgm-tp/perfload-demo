@@ -17,19 +17,19 @@ hostConfigs {
 			gcLogs {
 				dir = '../ref-app'
 				files = 'gclog.txt'
-				zipName = 'gc-logs.zip'
+				archiveName = 'gc-logs.zip'
 				cleanup = false
 			}
 			wrapperLog {
 				dir = '../ref-app'
 				files = 'wrapper.log'
-				zipName = 'wrapper-log.zip'
+				archiveName = 'wrapper-log.zip'
 				cleanup = false
 			}
 			agentLogs {
 				dir = '../agent'
 				files = '*.log'
-				zipName = 'agent-logs.zip'
+				archiveName = 'agent-logs.zip'
 				cleanup = false
 			}
 		}
