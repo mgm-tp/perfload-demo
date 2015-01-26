@@ -58,5 +58,6 @@ blubb]]></body>
 	<!-- Use a value which has been added programmatically in the RequestFlowEventListener by loading test data
 		 to parameterize the request. -->
 	<request type="GET" uri="/cpuload/${value}" uriAlias="randomCPUload"/>
-
+	
+	<request type="GET" uri="/404"/>
 </requestFlow>
