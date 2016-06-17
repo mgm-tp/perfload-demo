@@ -28,9 +28,6 @@ buildscript {
 
 repositories {
 	mavenLocal()
-	maven {
-		url "http://mgmbuilder02:8081/nexus/content/groups/public"
-	}
 	mavenCentral()
 }
 
@@ -43,18 +40,18 @@ configurations {
 
 dependencies {
 	def distros = [
-		['console', '4.8.0-beta-1'],
-		['client', '4.8.0-beta-1'],
-		['daemon', '4.8.0-beta-1'],
-		['agent', '1.3.0'],
-		['perfmon', '2.3.0-beta-1'],
-		['perfalyzer', '1.0.0-SNAPSHOT'],
-		['ref-app', '1.0.1-SNAPSHOT'],
-		['supervisor', '2.0.0-SNAPSHOT'],
-		['loadprofiles', '1.1.0']
+		[g: 'com.mgmtp.perfload.core', a: 'perfload-console', v: '4.8.0'],
+		[g: 'com.mgmtp.perfload.core', a: 'perfload-client', v: '4.8.0'],
+		[g: 'com.mgmtp.perfload.core', a: 'perfload-daemon', v: '4.8.0'],
+		[g: 'com.mgmtp.perfload.agent', a: 'perfload-agent', v: '1.4.0'],
+		[g: 'com.mgmtp.perfload.perfmon', a: 'perfload-perfmon', v: '2.3.0'],
+		[g: 'com.mgmtp.perfload.perfalyzer', a: 'perfload-perfalyzer', v: '1.0.0'],
+		[g: 'com.mgmtp.perfload.refapp', a: 'perfload-refapp', v: '1.0.2'],
+		[g: 'com.mgmtp.perfload.supervisor', a: 'perfload-supervisor', v: '2.0.1'],
+		[g: 'com.mgmtp.perfload.loadprofiles', a: 'perfload-loadprofiles', v: '1.2.1']
 	]
-	distros.each { a, v ->
-		distro "${project.groupId}:perfload-${a}:${v}:dist@zip"
+	distros.each { map ->
+		distro "${map.g}:${map.a}:${map.v}:dist@zip"
 	}
 }
 
@@ -100,8 +97,7 @@ def welcome() {
 }
 
 def init() {
-	def console = System.console()
-
+	def console = new Console()
 	def perfloadHome = console.readLine ' > Enter installation directory [../perfload-demo]: '
 	if (!perfloadHome) {
 		perfloadHome = '../perfload-demo'
@@ -196,4 +192,31 @@ def configureDistributions() {
 		file: "${perfloadHome}/supervisor/conf/LoadTestConfig_${family}.groovy",
 		tofile: "${perfloadHome}/supervisor/conf/LoadTestConfig.groovy"
 	)
+}
+
+class Console {
+
+	private final java.io.Console console
+	private BufferedReader oldFashionedReader
+
+	Console() {
+		console = System.console()
+		if (console == null) {
+			oldFashionedReader = new BufferedReader(new InputStreamReader(System.in))
+		}
+	}
+
+	String readLine(String prompt) {
+		if (console != null) {
+			return console.readLine(prompt)
+		} else {
+			try {
+				println(prompt)
+				return oldFashionedReader.readLine()
+			} catch (IOException ex) {
+				// can't really happen
+				throw new UncheckedIOException(ex)
+			}
+		}
+	}
 }

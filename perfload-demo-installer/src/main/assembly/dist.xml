@@ -87,7 +87,7 @@
 	<dependencySets>
 		<dependencySet>
 			<excludes>
-				<exclude>${project.groupId}:*</exclude>
+				<exclude>com.mgmtp.perfload.*:*</exclude>
 			</excludes>
 			<outputDirectory>lib</outputDirectory>
 		</dependencySet>

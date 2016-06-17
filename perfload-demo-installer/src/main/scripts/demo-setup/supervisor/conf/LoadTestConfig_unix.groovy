@@ -8,20 +8,20 @@ hostConfigs {
 		daemonId = 1
 		perfmon = true
 		startup = [
-			[dir: '../ref-app', executable: './bin/ref-app', args: ['start']]
+			[dir: '../refapp', executable: './bin/refapp', args: ['start']]
 		]
 		shutdown = [
-			[dir: '../ref-app', executable: './bin/ref-app', args: ['stop']]
+			[dir: '../refapp', executable: './bin/refapp', args: ['stop']]
 		]
 		archiving {
 			gcLogs {
-				dir = '../ref-app'
+				dir = '../refapp'
 				files = 'gclog.txt'
 				archiveName = 'gc-logs.zip'
 				cleanup = false
 			}
 			wrapperLog {
-				dir = '../ref-app'
+				dir = '../refapp'
 				files = 'wrapper.log'
 				archiveName = 'wrapper-log.zip'
 				cleanup = false

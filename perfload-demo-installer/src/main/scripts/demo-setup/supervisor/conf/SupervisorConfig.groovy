@@ -1,8 +1,4 @@
 
-/**
- * Configuration template for Supervisor.gant
- */
-
 loadProfileTestTimeout = 10
 cleanupBeforeTest = true
 executeStartupCommands = true
