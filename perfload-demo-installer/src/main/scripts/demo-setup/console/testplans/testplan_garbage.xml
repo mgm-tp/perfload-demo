@@ -4,6 +4,7 @@
 	<module>com.mgmtp.perfload.demo.driver.DemoDriverModule</module>
 	<loadProfile>demoTest_garbage.perfload</loadProfile>
 	<testJars>
-		<testJar>perfload-demo-driver-1.0.0-SNAPSHOT.jar</testJar>
+		<!-- TODO: do not hardcode the snapshot version, but replace dynamically during build -->
+		<testJar>perfload-demo-driver-1.0.1-SNAPSHOT.jar</testJar>
 	</testJars>
 </testplan>
