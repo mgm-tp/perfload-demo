@@ -26,7 +26,7 @@
 	<fileSets>
 		<fileSet>
 			<directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<includes>
 				<include>LICENSE</include>
 				<include>NOTICE</include>
@@ -58,28 +58,28 @@
 	<files>
 		<file>
 			<source>${basedir}/src/main/scripts/DemoInstaller.gradle</source>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<filtered>true</filtered>
 		</file>
 		<file>
 			<source>${basedir}/src/main/scripts/DemoInstaller.cmd</source>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<lineEnding>crlf</lineEnding>
 		</file>
 		<file>
 			<source>${basedir}/src/main/scripts/gradlew.cmd</source>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<lineEnding>crlf</lineEnding>
 		</file>
 		<file>
 			<source>${basedir}/src/main/scripts/DemoInstaller</source>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<fileMode>775</fileMode>
 			<lineEnding>lf</lineEnding>
 		</file>
 		<file>
 			<source>${basedir}/src/main/scripts/gradlew</source>
-			<outputDirectory>/</outputDirectory>
+			<outputDirectory></outputDirectory>
 			<fileMode>775</fileMode>
 			<lineEnding>lf</lineEnding>
 		</file>
@@ -95,6 +95,7 @@
 			<includes>
 				<include>${project.groupId}:perfload-demo-driver:*</include>
 			</includes>
+			<outputFileNameMapping>perfload-demo-driver.jar</outputFileNameMapping>
 			<outputDirectory>demo-setup/console/test-lib</outputDirectory>
 		</dependencySet>
 	</dependencySets>
